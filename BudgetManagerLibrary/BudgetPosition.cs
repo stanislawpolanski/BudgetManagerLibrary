@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BudgetManagerLibrary
 {
+	/// <summary>
+	/// Holds an info about value of budget position.
+	/// </summary>
 	class BudgetPosition : IComparable
 	{
 		public float AbsoluteValue;
@@ -18,9 +21,28 @@ namespace BudgetManagerLibrary
 			}
 			private set { }
 		}
+		/// <summary>
+		/// Compares to another budget position using Value and Factor.
+		/// </summary>
+		/// <param name="obj">Another BudgetPosition</param>
+		/// <returns>Returns 1 if this one is higher, 0 if they're equal and -1 if this one is lower.</returns>
 		public int CompareTo(object obj)
 		{
-			throw new NotImplementedException();
+			//Convert input to Budget posistion
+			BudgetPosition otherBudgetPosition = obj as BudgetPosition;
+
+			//If conversion is succesful then compare, throw ArgumentException otherwise
+			if (otherBudgetPosition != null)
+			{
+				if (this.Value > otherBudgetPosition.Value)
+					return 1;
+				else if (this.Value == otherBudgetPosition.Value)
+					return 0;
+				else
+					return -1;
+			}
+			else
+				throw new ArgumentException("Object is not a BudgetPosition");
 		}
 	}
 }
