@@ -9,7 +9,7 @@ namespace BudgetManagerLibrary
 	/// <summary>
 	/// Holds an info about value of budget position.
 	/// </summary>
-	class BudgetPosition : IComparable
+	public class BudgetPosition : IComparable
 	{
 		public float AbsoluteValue;
 		public float Factor;

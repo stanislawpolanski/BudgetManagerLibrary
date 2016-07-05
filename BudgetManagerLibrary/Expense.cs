@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BudgetManagerLibrary
 {
-	class Expense : BudgetPosition
+	public class Expense : BudgetPosition
 	{
 		public string ReceiptId;
 		public Expense()

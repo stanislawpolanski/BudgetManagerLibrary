@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BudgetManagerLibrary
 {
-	class Revenue : BudgetPosition
+	public class Revenue : BudgetPosition
 	{
 		public Revenue()
 		{

@@ -1,25 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BudgetManagerLibrary
 {
-	class BudgetPositionsList : List<BudgetPosition>
+	public class BudgetPositionsList : List<BudgetPosition>
 	{
-		internal float? Balance;
-		public float GetBalance()
+		internal float Balance
 		{
-			if (this.Balance == null)
-				this.ComputeBalance();
-			return (float)this.Balance;
-		}
-
-		internal void ComputeBalance()
-		{
-			this.ForEach(delegate (BudgetPosition bp)
+			get
 			{
-				Balance += bp.Value;
+				return this.Sum(bpl => bpl.Value);
 			}
-			);
 		}
 	}
 }
