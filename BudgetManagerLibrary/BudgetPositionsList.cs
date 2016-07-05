@@ -12,6 +12,7 @@ namespace BudgetManagerLibrary
 			{
 				return this.Sum(bpl => bpl.Value);
 			}
+			private set { }
 		}
 	}
 }

@@ -10,6 +10,11 @@ namespace BudgetManagerLibrary
 	{
 		public BudgetPositionsList BPL = new BudgetPositionsList();
 
+		public void AddPosition(BudgetPosition bp)
+		{
+			this.BPL.Add(bp);
+		}
+
 		public float GetBalance()
 		{
 			return BPL.Balance;

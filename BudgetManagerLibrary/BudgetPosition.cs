@@ -13,6 +13,8 @@ namespace BudgetManagerLibrary
 	{
 		public float AbsoluteValue;
 		public float Factor;
+		public uint Id;
+		public Receipt Rcp;
 		public float Value
 		{
 			get
