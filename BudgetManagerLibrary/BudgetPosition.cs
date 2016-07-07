@@ -11,10 +11,10 @@ namespace BudgetManagerLibrary
 	/// </summary>
 	public class BudgetPosition : IComparable
 	{
-		public float AbsoluteValue;
-		public float Factor;
 		public uint Id;
 		public Receipt Rcp;
+		public float AbsoluteValue;
+		public float Factor;
 		public float Value
 		{
 			get

@@ -6,18 +6,32 @@ using System.Threading.Tasks;
 
 namespace BudgetManagerLibrary
 {
+	/// <summary>
+	/// Budget class represents a budget. It holds collection of budget positions and gets the balance from the collection.
+	/// </summary>
 	public class Budget
 	{
+		/// <summary>
+		/// Collection of budget positions like revenues, spends etc.
+		/// </summary>
 		public BudgetPositionsList BPL = new BudgetPositionsList();
 
+		/// <summary>
+		/// Adds a position into the collection.
+		/// </summary>
+		/// <param name="bp">Budget position.</param>
 		public void AddPosition(BudgetPosition bp)
 		{
 			this.BPL.Add(bp);
 		}
 
+		/// <summary>
+		/// Gets the balance from the collection.
+		/// </summary>
+		/// <returns>Balance</returns>
 		public float GetBalance()
 		{
-			return BPL.Balance;
+			return BPL.GetBalance;
 		}
 	}
 }
