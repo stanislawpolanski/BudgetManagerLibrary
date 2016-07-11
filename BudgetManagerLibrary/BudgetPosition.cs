@@ -14,12 +14,12 @@ namespace BudgetManagerLibrary
 		public uint Id;
 		public Receipt Rcp;
 		public float AbsoluteValue;
-		public float Factor;
+		public float ValueFactor;
 		public float Value
 		{
 			get
 			{
-				return Factor * AbsoluteValue;
+				return ValueFactor * AbsoluteValue;
 			}
 			private set { }
 		}

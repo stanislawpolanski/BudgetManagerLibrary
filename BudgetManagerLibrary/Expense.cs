@@ -11,7 +11,7 @@ namespace BudgetManagerLibrary
 		public string ReceiptId;
 		public Expense()
 		{
-			base.Factor = -1;
+			base.ValueFactor = -1;
 		}
 
 		public Expense(string RId) : this()

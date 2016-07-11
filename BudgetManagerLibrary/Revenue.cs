@@ -10,7 +10,7 @@ namespace BudgetManagerLibrary
 	{
 		public Revenue()
 		{
-			base.Factor = 1;
+			base.ValueFactor = 1;
 		}
 	}
 }
