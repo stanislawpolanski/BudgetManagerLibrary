@@ -14,7 +14,7 @@ namespace BudgetManagerLibrary
 		/// <summary>
 		/// Collection of budget positions like revenues, spends etc.
 		/// </summary>
-		public BudgetPositionsList BPL = new BudgetPositionsList();
+		public BudgetPositionsList PositionsList = new BudgetPositionsList();
 
 		/// <summary>
 		/// Adds a position into the collection.
@@ -22,7 +22,7 @@ namespace BudgetManagerLibrary
 		/// <param name="bp">Budget position.</param>
 		public void AddPosition(BudgetPosition bp)
 		{
-			this.BPL.Add(bp);
+			this.PositionsList.Add(bp);
 		}
 
 		/// <summary>
@@ -31,7 +31,7 @@ namespace BudgetManagerLibrary
 		/// <returns>Balance</returns>
 		public float GetBalance()
 		{
-			return BPL.GetBalance;
+			return PositionsList.GetBalance;
 		}
 	}
 }
