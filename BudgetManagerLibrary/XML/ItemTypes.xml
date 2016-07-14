@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ItemTypes>
+	<Item Name="Revenue">
+		<Factor>1</Factor>
+	</Item>
+	<Item Name="Expense">
+		<Factor>-1</Factor>
+	</Item>
+</ItemTypes>

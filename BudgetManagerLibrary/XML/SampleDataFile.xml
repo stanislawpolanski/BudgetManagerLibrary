@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Budget>
+	<BudgetItem>
+		<AbsoluteValue>1314.62</AbsoluteValue>
+		<BookingDateTime>02/06/2013 16:00:23</BookingDateTime>
+		<ItemType>Revenue</ItemType>
+		<Receipt>
+			<BillingDateTime>01/06/2013 12:32:30</BillingDateTime>
+			<Name>ReceiptID2331</Name>
+		</Receipt>
+	</BudgetItem>
+	<BudgetItem>
+		<BookingDateTime>03/06/2013 15:11:07</BookingDateTime>
+		<AbsoluteValue>100.07</AbsoluteValue>
+		<ItemType>Expense</ItemType>
+		<Receipt>
+			<BillingDateTime>02/06/2013 11:22:33</BillingDateTime>
+			<Name>ExpenseReceiptName566</Name>
+		</Receipt>
+	</BudgetItem>
+</Budget>
