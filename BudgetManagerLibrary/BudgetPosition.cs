@@ -12,7 +12,8 @@ namespace BudgetManagerLibrary
 	public class BudgetPosition : IComparable
 	{
 		public int Id;
-		public Receipt Rcp;
+		public DateTime BillingDate;
+		public string ReceiptName;
 		public float AbsoluteValue;
 		public float ValueFactor;
 		public float Value

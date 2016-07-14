@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,8 @@ namespace WindowsFormsApplication.Models
 {
 	class DBModel
 	{
-		internal string ConnectionString;
+		private string ConnectionString;
+		internal SqlConnection DBConnection;
 
 		public DBModel()
 		{
@@ -21,6 +23,9 @@ namespace WindowsFormsApplication.Models
 				ConnectionString = settings.ConnectionString;
 			else
 				throw new NullReferenceException("Couldn't retrieve connection string");
+
+			DBConnection = new SqlConnection(ConnectionString);
+			DBConnection.Open();
 		}
 	}
 }

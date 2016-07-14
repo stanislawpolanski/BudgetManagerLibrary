@@ -32,5 +32,16 @@ namespace WindowsFormsApplication.Properties {
                 return ((string)(this["connString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\ProjectsV12;Initial Catalog=BudgetManager;Integrated Securi" +
+            "ty=True")]
+        public string BudgetManagerConnectionString {
+            get {
+                return ((string)(this["BudgetManagerConnectionString"]));
+            }
+        }
     }
 }

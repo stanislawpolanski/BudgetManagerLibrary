@@ -54,6 +54,7 @@
     <Compile Include="AddRevenue.Designer.cs">
       <DependentUpon>AddRevenue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\DBRevenueModel.cs" />
     <Compile Include="Models\DBBudgetModel.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
