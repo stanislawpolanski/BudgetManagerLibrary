@@ -12,6 +12,7 @@ namespace BudgetManagerLibrary
 	public class BudgetPosition : IComparable
 	{
 		public int Id;
+		public DateTime BookingDate;
 		public DateTime BillingDate;
 		public string ReceiptName;
 		public float AbsoluteValue;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,9 +8,10 @@ using System.Xml.Linq;
 
 namespace BudgetManagerLibrary.Models
 {
-	class XMLDataModel : IDataModel
+	public class XMLDataModel : IDataModel
 	{
 		private XDocument DataFile = null;
+		private Budget LoadedBudget = null;
 		public bool AddRow(BudgetPosition bp)
 		{
 			throw new NotImplementedException();
@@ -19,8 +21,10 @@ namespace BudgetManagerLibrary.Models
 		{
 			//check if budget is loaded
 			if (DataFile == null)
-				throw new NullReferenceException("Data filed not loaded!");
-			throw new NotImplementedException();
+				throw new NullReferenceException("Data file not loaded!");
+			if (LoadedBudget == null)
+				throw new NullReferenceException("Budget not processed even though file loaded!");
+			return LoadedBudget;
 		}
 
 		public BudgetPosition GetRow(int budgetPositionId)
@@ -28,19 +32,45 @@ namespace BudgetManagerLibrary.Models
 			throw new NotImplementedException();
 		}
 
-		public bool LoadBudget(string dataSourcePath)
+		public bool LoadBudget(string accessString)
 		{
 			try
 			{
-				DataFile = XDocument.Load(dataSourcePath);
-				
+				Budget b = new Budget();
+				DataFile = XDocument.Load(accessString);
+				XElement xBudgetItems = DataFile.Element("Budget");
+
+				foreach (XElement item in xBudgetItems.Elements())
+				{
+					BudgetPosition bp = new BudgetPosition();
+
+					//processing basic data
+					bp.AbsoluteValue = Convert.ToSingle(item.Element("AbsoluteValue").Value, CultureInfo.InvariantCulture);
+					bp.BookingDate = Convert.ToDateTime(item.Element("BookingDateTime").Value);
+					if (item.Element("ItemType").Value == "Revenue")
+						bp.ValueFactor = 1;
+					else if (item.Element("ItemType").Value == "Expense")
+						bp.ValueFactor = -1;
+					else
+						throw new Exception("Unknown item type.");
+
+					//processing receipt info
+					XElement xReceipt = item.Element("Receipt");
+					bp.BillingDate = Convert.ToDateTime(xReceipt.Element("BillingDateTime").Value);
+					bp.ReceiptName = xReceipt.Element("Name").Value;
+
+					b.AddPosition(bp);
+				}
+
+				LoadedBudget = b;
 			}
 			catch(Exception e)
 			{
 				return false;
 			}
 			//TODO validation with xml schema
-			//TODO loading XML to budget class
+			
+
 			return true;
 		}
 	}
