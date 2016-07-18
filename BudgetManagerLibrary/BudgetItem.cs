@@ -9,7 +9,7 @@ namespace BudgetManagerLibrary
 	/// <summary>
 	/// Holds an info about value of budget position.
 	/// </summary>
-	public class BudgetPosition : IComparable
+	public class BudgetItem : IComparable
 	{
 		public int Id;
 		public DateTime BookingDate;
@@ -17,6 +17,8 @@ namespace BudgetManagerLibrary
 		public string ReceiptName;
 		public float AbsoluteValue;
 		public float ValueFactor;
+
+		//TODO ADD AN ENUM OF TYPE
 		public float Value
 		{
 			get
@@ -33,7 +35,7 @@ namespace BudgetManagerLibrary
 		public int CompareTo(object obj)
 		{
 			//Convert input to Budget posistion
-			BudgetPosition otherBudgetPosition = obj as BudgetPosition;
+			BudgetItem otherBudgetPosition = obj as BudgetItem;
 
 			//If conversion is succesful then compare, throw ArgumentException otherwise
 			if (otherBudgetPosition != null)
@@ -46,7 +48,7 @@ namespace BudgetManagerLibrary
 					return -1;
 			}
 			else
-				throw new ArgumentException("Object is not a BudgetPosition");
+				throw new ArgumentException("Object is not a BudgetPosition.");
 		}
 	}
 }

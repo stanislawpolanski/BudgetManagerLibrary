@@ -12,8 +12,9 @@ namespace BudgetManagerLibrary.Models
 	{
 		private XDocument DataFile = null;
 		private Budget LoadedBudget = null;
-		public bool AddRow(BudgetPosition bp)
+		public bool AddRow(BudgetItem bp)
 		{
+			//TODO WRITING NEW ITEM TO A FILE
 			throw new NotImplementedException();
 		}
 
@@ -27,11 +28,6 @@ namespace BudgetManagerLibrary.Models
 			return LoadedBudget;
 		}
 
-		public BudgetPosition GetRow(int budgetPositionId)
-		{
-			throw new NotImplementedException();
-		}
-
 		public bool LoadBudget(string accessString)
 		{
 			try
@@ -42,7 +38,7 @@ namespace BudgetManagerLibrary.Models
 
 				foreach (XElement item in xBudgetItems.Elements())
 				{
-					BudgetPosition bp = new BudgetPosition();
+					BudgetItem bp = new BudgetItem();
 
 					//processing basic data
 					bp.AbsoluteValue = Convert.ToSingle(item.Element("AbsoluteValue").Value, CultureInfo.InvariantCulture);
@@ -64,7 +60,7 @@ namespace BudgetManagerLibrary.Models
 
 				LoadedBudget = b;
 			}
-			catch(Exception e)
+			catch(Exception)
 			{
 				return false;
 			}

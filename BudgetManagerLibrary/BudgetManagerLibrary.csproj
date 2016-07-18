@@ -41,8 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Budget.cs" />
-    <Compile Include="BudgetPosition.cs" />
-    <Compile Include="BudgetPositionsList.cs" />
+    <Compile Include="BudgetItem.cs" />
+    <Compile Include="BudgetItemsList.cs" />
+    <Compile Include="Models\DataModelFactory.cs" />
     <Compile Include="Models\IDataModel.cs" />
     <Compile Include="Models\XMLDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

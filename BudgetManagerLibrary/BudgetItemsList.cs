@@ -7,7 +7,7 @@ namespace BudgetManagerLibrary
 	/// <summary>
 	/// The class holds all budget positions.
 	/// </summary>
-	public class BudgetPositionsList : List<BudgetPosition>
+	public class BudgetItemsList : List<BudgetItem>
 	{
 		internal float GetBalance
 		{

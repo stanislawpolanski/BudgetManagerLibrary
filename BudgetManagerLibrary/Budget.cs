@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,13 +15,13 @@ namespace BudgetManagerLibrary
 		/// <summary>
 		/// Collection of budget positions like revenues, spends etc.
 		/// </summary>
-		public BudgetPositionsList PositionsList = new BudgetPositionsList();
+		public BudgetItemsList PositionsList = new BudgetItemsList();
 
 		/// <summary>
 		/// Adds a position into the collection.
 		/// </summary>
 		/// <param name="bp">Budget position.</param>
-		public void AddPosition(BudgetPosition bp)
+		public void AddPosition(BudgetItem bp)
 		{
 			this.PositionsList.Add(bp);
 		}
@@ -32,6 +33,12 @@ namespace BudgetManagerLibrary
 		public float GetBalance()
 		{
 			return PositionsList.GetBalance;
+		}
+
+		public DataTable ToDataTable()
+		{
+
+			throw new NotImplementedException();
 		}
 	}
 }

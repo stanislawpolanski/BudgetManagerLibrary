@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace BudgetManagerLibrary.Models
 {
-	interface IDataModel
+	public interface IDataModel
 	{
 		bool LoadBudget(string accessString);
 		Budget GetBudget();
-		bool AddRow(BudgetPosition bp);
-		BudgetPosition GetRow(int budgetPositionId);
+		bool AddRow(BudgetItem bp);
 	}
 }
