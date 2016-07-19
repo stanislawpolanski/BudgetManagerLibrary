@@ -16,10 +16,17 @@ namespace BudgetManagerLibrary
 		public DateTime BillingDate;
 		public string ReceiptName;
 		public float AbsoluteValue;
-		public float ValueFactor;
-		public enum ItemType {Expense, Revenue}
+		public float ValueFactor
+		{
+			get
+			{
+				return Convert.ToSingle((int)Type);
+			}
+			private set { }
+		}
+		public enum ItemType {None = 0, Expense = -1, Revenue = 1}
+		public ItemType Type;
 
-		//TODO Compute factor basing on itemtype
 		public float Value
 		{
 			get
@@ -28,6 +35,12 @@ namespace BudgetManagerLibrary
 			}
 			private set { }
 		}
+
+		public BudgetItem()
+		{
+			ReceiptName = "Unknown";
+		}
+
 		/// <summary>
 		/// Compares to another budget position using Value and Factor.
 		/// </summary>
