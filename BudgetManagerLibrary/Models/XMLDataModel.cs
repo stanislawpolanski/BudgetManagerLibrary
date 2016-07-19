@@ -12,6 +12,7 @@ namespace BudgetManagerLibrary.Models
 	{
 		private XDocument DataFile = null;
 		private Budget LoadedBudget = null;
+		private string AccessString = null;
 		public bool AddRow(BudgetItem bp)
 		{
 			//TODO WRITING NEW ITEM TO A FILE
@@ -33,10 +34,11 @@ namespace BudgetManagerLibrary.Models
 
 		public bool LoadBudget(string accessString)
 		{
+			this.AccessString = accessString;
 			try
 			{
 				Budget b = new Budget();
-				DataFile = XDocument.Load(accessString);
+				DataFile = XDocument.Load(this.AccessString);
 				XElement xBudgetItems = DataFile.Element("Budget");
 
 				foreach (XElement item in xBudgetItems.Elements())
@@ -46,12 +48,12 @@ namespace BudgetManagerLibrary.Models
 					//processing basic data
 					bp.AbsoluteValue = Convert.ToSingle(item.Element("AbsoluteValue").Value, CultureInfo.InvariantCulture);
 					bp.BookingDate = Convert.ToDateTime(item.Element("BookingDateTime").Value);
-					if (item.Element("ItemType").Value == "Revenue")
-						bp.ValueFactor = 1;
-					else if (item.Element("ItemType").Value == "Expense")
-						bp.ValueFactor = -1;
-					else
+
+
+					BudgetItem.ItemType bitype;
+					if (!Enum.TryParse<BudgetItem.ItemType>(item.Element("ItemType").Value, out bitype))
 						throw new Exception("Unknown item type.");
+					bp.Type = bitype;
 
 					//processing receipt info
 					XElement xReceipt = item.Element("Receipt");
@@ -66,6 +68,7 @@ namespace BudgetManagerLibrary.Models
 			catch(Exception)
 			{
 				return false;
+				throw;
 			}
 			//TODO validation with xml schema
 			
@@ -81,9 +84,22 @@ namespace BudgetManagerLibrary.Models
 		private void WriteNewItem(Budget b, EventArgs e)
 		{
 			ItemAddedEventArgs iae = e as ItemAddedEventArgs;
-			Console.WriteLine("Writing to a file fired with value of: {0}", iae.newBudgetItem.AbsoluteValue);
+			BudgetItem bi = iae.newBudgetItem;
 			//TODO WRITING ITEM TO XML FILE
 			
+			DataFile.Element("Budget").Add
+			(new XElement("BudgetItem",
+				new XElement("AbsoluteValue", bi.AbsoluteValue),
+				new XElement("BookingDateTime", bi.BookingDate),
+				new XElement("ItemType", bi.Type),
+				new XElement("Receipt",
+						new XElement("BillingDateTime", bi.BillingDate),
+						new XElement("Name", bi.ReceiptName)
+					)
+				)
+			);
+			DataFile.Save(AccessString);
+			this.LoadBudget(AccessString);
 		}
 	}
 }
