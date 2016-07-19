@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace BudgetManagerLibrary.Models
 {
-	public interface IDataModel : IBudgetListener
+	public interface IBudgetListener
 	{
-		bool LoadBudget(string accessString);
-		Budget GetBudget();
-		bool AddRow(BudgetItem bp);
+		void SubscribeToBudget(Budget b);
 	}
 }

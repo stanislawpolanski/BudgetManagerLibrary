@@ -17,8 +17,9 @@ namespace BudgetManagerLibrary
 		public string ReceiptName;
 		public float AbsoluteValue;
 		public float ValueFactor;
+		public enum ItemType {Expense, Revenue}
 
-		//TODO ADD AN ENUM OF TYPE
+		//TODO Compute factor basing on itemtype
 		public float Value
 		{
 			get

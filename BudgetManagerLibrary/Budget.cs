@@ -12,18 +12,43 @@ namespace BudgetManagerLibrary
 	/// </summary>
 	public class Budget
 	{
+		public event ItemAddedHandler ItemAddedEvent;
+		public delegate void ItemAddedHandler(Budget b, EventArgs e);
+		
 		/// <summary>
-		/// Collection of budget positions like revenues, spends etc.
+		/// Collection of budget positions like revenues, expenses etc.
 		/// </summary>
-		public BudgetItemsList PositionsList = new BudgetItemsList();
+		public BudgetItemsList ItemsList
+		{
+			get;
+			private set;
+
+		}
+
+		public Budget()
+		{
+			ItemsList = new BudgetItemsList();
+		}
 
 		/// <summary>
 		/// Adds a position into the collection.
 		/// </summary>
-		/// <param name="bp">Budget position.</param>
-		public void AddPosition(BudgetItem bp)
+		/// <param name="bi">Budget position.</param>
+		public void LoadItem(BudgetItem bi)
 		{
-			this.PositionsList.Add(bp);
+			this.ItemsList.Add(bi);
+		}
+
+		public void LoadItem(BudgetItemsList bil)
+		{
+			this.ItemsList = bil;
+		}
+
+		public void AddNewItem(BudgetItem nbi)
+		{
+			ItemAddedEventArgs e = new ItemAddedEventArgs(nbi);
+			if (ItemAddedEvent != null)
+				ItemAddedEvent(this, e);
 		}
 
 		/// <summary>
@@ -32,12 +57,11 @@ namespace BudgetManagerLibrary
 		/// <returns>Balance</returns>
 		public float GetBalance()
 		{
-			return PositionsList.GetBalance;
+			return ItemsList.GetBalance;
 		}
 
 		public DataTable ToDataTable()
 		{
-
 			throw new NotImplementedException();
 		}
 	}

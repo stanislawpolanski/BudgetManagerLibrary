@@ -25,6 +25,9 @@ namespace BudgetManagerLibrary.Models
 				throw new NullReferenceException("Data file not loaded!");
 			if (LoadedBudget == null)
 				throw new NullReferenceException("Budget not processed even though file loaded!");
+
+			this.SubscribeToBudget(LoadedBudget);
+
 			return LoadedBudget;
 		}
 
@@ -55,7 +58,7 @@ namespace BudgetManagerLibrary.Models
 					bp.BillingDate = Convert.ToDateTime(xReceipt.Element("BillingDateTime").Value);
 					bp.ReceiptName = xReceipt.Element("Name").Value;
 
-					b.AddPosition(bp);
+					b.LoadItem(bp);
 				}
 
 				LoadedBudget = b;
@@ -68,6 +71,19 @@ namespace BudgetManagerLibrary.Models
 			
 
 			return true;
+		}
+
+		public void SubscribeToBudget(Budget b)
+		{
+			b.ItemAddedEvent += new Budget.ItemAddedHandler(WriteNewItem);
+		}
+
+		private void WriteNewItem(Budget b, EventArgs e)
+		{
+			ItemAddedEventArgs iae = e as ItemAddedEventArgs;
+			Console.WriteLine("Writing to a file fired with value of: {0}", iae.newBudgetItem.AbsoluteValue);
+			//TODO WRITING ITEM TO XML FILE
+			
 		}
 	}
 }
