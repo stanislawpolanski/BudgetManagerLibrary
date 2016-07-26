@@ -11,10 +11,26 @@ namespace BudgetManagerLibrary
 	/// </summary>
 	public class BudgetItem : IComparable
 	{
-		public int Id;
-		public DateTime BookingDate;
-		public DateTime BillingDate;
-		public string ReceiptName;
+		public int Id
+		{
+			get;
+			set;
+		}
+		public DateTime BookingDate
+		{
+			get;
+			set;
+		}
+		public DateTime BillingDate
+		{
+			get;
+			set;
+		}
+		public string ReceiptName
+		{
+			get;
+			set;
+		}
 		public float AbsoluteValue;
 		public float ValueFactor
 		{

@@ -10,6 +10,5 @@ namespace BudgetManagerLibrary.Models
 	{
 		bool LoadBudget(string accessString);
 		Budget GetBudget();
-		bool AddRow(BudgetItem bp);
 	}
 }

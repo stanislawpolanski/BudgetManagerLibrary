@@ -46,6 +46,7 @@ namespace BudgetManagerLibrary
 
 		public void AddNewItem(BudgetItem nbi)
 		{
+			this.ItemsList.Add(nbi);
 			ItemAddedEventArgs e = new ItemAddedEventArgs(nbi);
 			if (ItemAddedEvent != null)
 				ItemAddedEvent(this, e);

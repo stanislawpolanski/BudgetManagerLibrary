@@ -13,11 +13,6 @@ namespace BudgetManagerLibrary.Models
 		private XDocument DataFile = null;
 		private Budget LoadedBudget = null;
 		private string AccessString = null;
-		public bool AddRow(BudgetItem bp)
-		{
-			//TODO WRITING NEW ITEM TO A FILE
-			throw new NotImplementedException();
-		}
 
 		public Budget GetBudget()
 		{
@@ -85,7 +80,6 @@ namespace BudgetManagerLibrary.Models
 		{
 			ItemAddedEventArgs iae = e as ItemAddedEventArgs;
 			BudgetItem bi = iae.newBudgetItem;
-			//TODO WRITING ITEM TO XML FILE
 			
 			DataFile.Element("Budget").Add
 			(new XElement("BudgetItem",
