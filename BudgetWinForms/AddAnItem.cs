@@ -21,13 +21,13 @@ namespace BudgetWinForms
 
 		private void addButton_Click(object sender, EventArgs e)
 		{
-			BudgetItem bi = new BudgetItem();
+			Item bi = new Item();
 			bi.AbsoluteValue = (float)valueNumericUpDown.Value;
 
 			if (expenseRadioButton.Checked)
-				bi.Type = BudgetItem.ItemType.Expense;
+				bi.Type = Item.ItemType.Expense;
 			else if (revenueRadioButton.Checked)
-				bi.Type = BudgetItem.ItemType.Revenue;
+				bi.Type = Item.ItemType.Revenue;
 			else
 			{
 				MessageBox.Show("Choose a type!");

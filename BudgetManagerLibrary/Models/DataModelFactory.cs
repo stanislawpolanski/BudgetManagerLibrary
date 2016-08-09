@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BudgetManagerLibrary.Models
 {
+	/// <summary>
+	/// Produces models for reading and writing budget data.
+	/// </summary>
 	public class DataModelFactory
 	{
 		public enum DataModelSource { XML };
@@ -19,6 +22,11 @@ namespace BudgetManagerLibrary.Models
 			};
 		}
 
+		/// <summary>
+		/// Looks for a specified model and returns an instance of him.
+		/// </summary>
+		/// <param name="modelName">Model name.</param>
+		/// <returns>IDataModel compatible model.</returns>
 		public IDataModel CreateDataModel(DataModelSource modelName)
 		{
 			IDataModel dataModel;

@@ -5,10 +5,14 @@ using System.Linq;
 namespace BudgetManagerLibrary
 {
 	/// <summary>
-	/// The class holds all budget positions.
+	/// The collection of budget items.
 	/// </summary>
-	public class BudgetItemsList : List<BudgetItem>
+	public class ItemsList : List<Item>
 	{
+
+		/// <summary>
+		/// Computes and returns the balance.
+		/// </summary>
 		internal float GetBalance
 		{
 			get

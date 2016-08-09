@@ -50,7 +50,7 @@ namespace BudgetWinForms
 
 		}
 
-		public void WriteNewItem(BudgetItem bi)
+		public void WriteNewItem(Item bi)
 		{
 			CurrentBudget.AddNewItem(bi);
 		}

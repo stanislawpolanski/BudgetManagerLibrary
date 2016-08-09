@@ -41,8 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Budget.cs" />
-    <Compile Include="BudgetItem.cs" />
-    <Compile Include="BudgetItemsList.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="ItemsList.cs" />
     <Compile Include="ItemAddedEventArgs.cs" />
     <Compile Include="Models\DataModelFactory.cs" />
     <Compile Include="IBudgetListener.cs" />

@@ -9,7 +9,7 @@ namespace BudgetManagerLibrary
 	/// <summary>
 	/// Holds an info about value of budget position.
 	/// </summary>
-	public class BudgetItem : IComparable
+	public class Item : IComparable
 	{
 		public int Id
 		{
@@ -52,7 +52,7 @@ namespace BudgetManagerLibrary
 			private set { }
 		}
 
-		public BudgetItem()
+		public Item()
 		{
 			ReceiptName = "Unknown";
 		}
@@ -65,7 +65,7 @@ namespace BudgetManagerLibrary
 		public int CompareTo(object obj)
 		{
 			//Convert input to Budget posistion
-			BudgetItem otherBudgetPosition = obj as BudgetItem;
+			Item otherBudgetPosition = obj as Item;
 
 			//If conversion is succesful then compare, throw ArgumentException otherwise
 			if (otherBudgetPosition != null)
